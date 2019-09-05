@@ -1,0 +1,46 @@
+<div class="container">
+    <div ng-controller="accountController">
+        <div class="row">
+            <div class="col-md-8 info-tab">
+                <h1 class="profile-head">POFILER</h1>
+                <P class="profile-body">Profiler makes you add pictures of favorite celebrities and people that are so special to you. 
+                    You can also add notes about them, add informations and something special about them.
+                </P>
+            </div>
+            <div class="col-md-4" ng-if="!showPage" ng-hide="check === true">
+                <div ng-style="styles">
+                    <div style="text-align: center;">
+                        <h3>SIGN UP</h3>
+                    </div>
+                    <hr />
+                    <form ng-submit="signup()" >
+                        First Name <input type="text" class="form-control" ng-model="users.firstname" ng-required="true" /><br />
+                        Last Name <input type="text" class="form-control" ng-model="users.lastname" ng-required="true" /><br />
+                        Email <input type="email" class="form-control" ng-model="users.email" ng-required="true" /><br />
+                        Password <input type="password" class="form-control" ng-model="users.password" ng-required="true" /><br />
+                        Confirm Password <input type="password" class="form-control" ng-model="users.confirmpassword" ng-required="true" /><br />
+                        <input type="submit" value="Create Account" class="btn btn-primary"><br />
+                    </form>
+                    <div class="have-account">
+                        <span>Have an account already? <a ng-style="signinOption" ng-click="haveAccount()">Login</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 offset-md-2" ng-if="!showPage" ng-show="check === true">
+                <div ng-style="styles">
+                    <h3 style="text-align: center">SIGN IN</h3>
+                    <hr />
+                    <form ng-submit="signin()">
+                        Email <input type="email" class="form-control" ng-model="users.email" ng-required="true" /><br />
+                        Password <input type="password" class="form-control" ng-model="users.password" ng-required="true" /><br />
+                        <input type="submit" value="Login" class="btn btn-primary"><br />
+                    </form>
+                    <div class="have-account">
+                        <span>Don't have account? <a ng-style="signinOption" ng-click="dontHaveAccount()">Create Account</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-include="'homepage.html'" ng-show="userLogin === true">
+    </div>
+</div>

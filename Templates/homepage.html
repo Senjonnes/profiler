@@ -1,0 +1,15 @@
+<div ng-style="welcomePage" ng-controller="homepageController">
+    <div class="container">
+        <h1>Hello, <span style="color: red; text-transform: uppercase;">{{username}}</span></h1>
+        <p style="font-size: 18px; margin: 10px 0">Below are your recently added pictures</p>
+        <div class="row">
+            <div class="col-md-4" ng-repeat="pictures in pictures">
+                <img class="profile-image" ng-src="{{pictures.pictures}}" />
+                <div class="profile-text">
+                    <h3>{{pictures.name}}</h3>
+                    <p>{{pictures.about}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
