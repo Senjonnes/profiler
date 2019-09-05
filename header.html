@@ -1,7 +1,7 @@
-<div id="menu-bar" ng-controller="headerController">
+<div id="menu-bar">
     <h1>WELCOME TO PROFILER</h1>
     <ul>
-        <li ng-if="ifLogin"><a href="/" ng-click="logout()">Logout</a></li>
+        <li><a href="/" ng-click="logout()">{{logs}}</a></li>
         <li><a href="about">About</a></li>
         <li><a href="homepage">Dashboard</a></li>
         <li><a href="profile">Profile</a></li>

@@ -1,10 +1,17 @@
-app.controller("accountController", ["$scope", "$location", function($scope, $location){
+app.controller("accountController", ["$scope", "$location", "$route", function($scope, $location, $route){
     $scope.check = false;
     $scope.userLogin = false;
     $scope.showPage = false;
+    $scope.ifLogin = localStorage.getItem("ifLogin");
     
     $scope.styles = {
         "margin-top": "10px"
+    }
+
+    if(JSON.parse($scope.ifLogin)) {
+        $scope.logs = "Logout";
+    } else {
+        $scope.logs = ""
     }
 
     $scope.users = {};
@@ -17,9 +24,10 @@ app.controller("accountController", ["$scope", "$location", function($scope, $lo
             localStorage.setItem("lastname", $scope.users.lastname);
             localStorage.setItem("email", $scope.users.email);
             localStorage.setItem("password", $scope.users.password);
-            alert("Submitted");
-            $scope.showPage = true;
-            $scope.userLogin = true;
+            alert("Account created succesfully");
+            localStorage.setItem("ifLogin", true);
+            $location.path('/homepage');
+            $route.reload();
         }
     }
     
@@ -36,9 +44,8 @@ app.controller("accountController", ["$scope", "$location", function($scope, $lo
         if(localEmail === $scope.users.email && localPassword === $scope.users.password) {
             alert("Login Succesful")
             localStorage.setItem("ifLogin", true);
-            $location.path('/homepage')
-            // $scope.userLogin = true;
-            // $scope.showPage = true;
+            $location.path('/homepage');
+            $route.reload();
         } else {
             alert("Incorrect login details, try again");
         }
@@ -55,6 +62,13 @@ app.controller("accountController", ["$scope", "$location", function($scope, $lo
     
     $scope.welcomePage = {
         "margin-top": "50px"
+    }
+
+    $scope.logout = function () {
+        localStorage.setItem("ifLogin", false);
+        alert("Good Day");
+        $location.path('/');
+        $route.reload();
     }
 
     
@@ -96,13 +110,4 @@ app.controller("homepageController", ["$scope", function($scope){
         }
     ]
 
-}])
-
-app.controller("headerController", ["$scope", function($scope){
-    $scope.ifLogin = localStorage.getItem("ifLogin");
-    $scope.logout = function () {
-        $scope.ifLogin = false;
-        alert("Good Day");
-        localStorage.setItem("ifLogin", $scope.ifLogin);
-    }
 }])
