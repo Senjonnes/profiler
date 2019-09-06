@@ -1,4 +1,4 @@
-app.controller("accountController", ["$scope", "$location", "$route", function($scope, $location, $route){
+app.controller("accountController", ["$scope", "$location", "$window", function($scope, $location, $window){
     $scope.check = false;
     $scope.userLogin = false;
     $scope.showPage = false;
@@ -27,7 +27,7 @@ app.controller("accountController", ["$scope", "$location", "$route", function($
             alert("Account created succesfully");
             localStorage.setItem("ifLogin", true);
             $location.path('/homepage');
-            $route.reload();
+            // $window.location.reload();
         }
     }
     
@@ -45,7 +45,7 @@ app.controller("accountController", ["$scope", "$location", "$route", function($
             alert("Login Succesful")
             localStorage.setItem("ifLogin", true);
             $location.path('/homepage');
-            $route.reload();
+            // $window.location.reload();
         } else {
             alert("Incorrect login details, try again");
         }
@@ -68,7 +68,7 @@ app.controller("accountController", ["$scope", "$location", "$route", function($
         localStorage.setItem("ifLogin", false);
         alert("Good Day");
         $location.path('/');
-        $route.reload();
+        // $window.location.reload();
     }
 
     
