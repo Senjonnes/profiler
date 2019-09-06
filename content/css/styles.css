@@ -7,15 +7,6 @@ h1,h2,h3{
   margin: 0;
 }
 
-.belt{
-  padding: 5px 10px;
-  border-radius: 10px;
-  margin-left: 5px;
-  color: #fff;
-  font-size: 15px;
-  text-transform: uppercase;
-}
-
 #menu-bar{
   background: crimson;
   color: #fff;
@@ -176,7 +167,8 @@ main{
   height: 30rem;
   border: 2px solid #ee1846;
   border-radius: 10px;
-  margin: 20px 0 10px 0;
+  display: block;
+  margin: 20px auto 10px auto;
 }
 
 .profile-text {

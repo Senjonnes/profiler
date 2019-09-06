@@ -1,11 +1,30 @@
-app.controller("accountController", ["$scope", "$location", "$window", function($scope, $location, $window){
+app.controller("accountController", ["$scope", "$location", "$window", "$timeout", function($scope, $location, $window, $timeout){
     $scope.check = false;
     $scope.userLogin = false;
     $scope.showPage = false;
     $scope.ifLogin = localStorage.getItem("ifLogin");
+    $scope.ifCreateTrue = false;
+    $scope.ifLoginTrue = false;
+    $scope.createAccount = "Create Account"
+    $scope.loginAccount = "Login"
     
     $scope.styles = {
         "margin-top": "10px"
+    }
+
+    const signupAction = () => {
+        alert("Account created succesfully");
+        localStorage.setItem("ifLogin", true);
+        $scope.createAccount
+        $location.path('/homepage');
+        $window.location.reload(true);
+    }
+
+    const loginAction = () => {
+        alert("Login Succesful")
+        localStorage.setItem("ifLogin", true);
+        $location.path('/homepage');
+        $window.location.reload(true);
     }
 
     if(JSON.parse($scope.ifLogin)) {
@@ -28,10 +47,9 @@ app.controller("accountController", ["$scope", "$location", "$window", function(
             localStorage.setItem("lastname", $scope.users.lastname);
             localStorage.setItem("email", $scope.users.email);
             localStorage.setItem("password", $scope.users.password);
-            alert("Account created succesfully");
-            localStorage.setItem("ifLogin", true);
-            $location.path('/homepage');
-            $window.location.reload(true);
+            $scope.ifCreateTrue = true;
+            $scope.createAccount = "Creating";
+            $timeout(signupAction, 3000);
         }
     }
     
@@ -46,10 +64,9 @@ app.controller("accountController", ["$scope", "$location", "$window", function(
         console.log($scope.users.email);
         console.log($scope.users.password);
         if(localEmail === $scope.users.email && localPassword === $scope.users.password) {
-            alert("Login Succesful")
-            localStorage.setItem("ifLogin", true);
-            $location.path('/homepage');
-            $window.location.reload(true);
+            $scope.ifLoginTrue = true;
+            $scope.loginAccount = "Please wait..";
+            $timeout(loginAction, 3000);
         } else {
             alert("Incorrect login details, try again");
         }

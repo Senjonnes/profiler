@@ -19,7 +19,7 @@
                         Email <input type="email" class="form-control" ng-model="users.email" ng-required="true" /><br />
                         Password <input type="password" class="form-control" ng-model="users.password" ng-required="true" /><br />
                         Confirm Password <input type="password" class="form-control" ng-model="users.confirmpassword" ng-required="true" /><br />
-                        <input type="submit" value="Create Account" class="btn btn-primary"><br />
+                        <button ng-disabled="ifCreateTrue" type="submit" class="btn btn-primary"><i ng-show="ifCreateTrue" class="fa fa-spinner fa-spin"></i> {{createAccount}}</button><br />
                     </form>
                     <div class="have-account">
                         <span>Have an account already? <a ng-style="signinOption" ng-click="haveAccount()">Login</a></span>
@@ -33,7 +33,7 @@
                     <form ng-submit="signin()">
                         Email <input type="email" class="form-control" ng-model="users.email" ng-required="true" /><br />
                         Password <input type="password" class="form-control" ng-model="users.password" ng-required="true" /><br />
-                        <input type="submit" value="Login" class="btn btn-primary"><br />
+                        <button ng-disabled="ifLoginTrue" type="submit" class="btn btn-primary"><i ng-show="ifLoginTrue" class="fa fa-spinner fa-spin"></i> {{loginAccount}}</button><br />
                     </form>
                     <div class="have-account">
                         <span>Don't have account? <a ng-style="signinOption" ng-click="dontHaveAccount()">Create Account</a></span>
