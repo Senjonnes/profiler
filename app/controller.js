@@ -10,8 +10,12 @@ app.controller("accountController", ["$scope", "$location", "$window", function(
 
     if(JSON.parse($scope.ifLogin)) {
         $scope.logs = "Logout";
+        $scope.dash = "Dashboard"
+        $scope.prof = "Profile"
     } else {
         $scope.logs = ""
+        $scope.dash = ""
+        $scope.prof = ""
     }
 
     $scope.users = {};
@@ -27,7 +31,7 @@ app.controller("accountController", ["$scope", "$location", "$window", function(
             alert("Account created succesfully");
             localStorage.setItem("ifLogin", true);
             $location.path('/homepage');
-            // $window.location.reload();
+            $window.location.reload(true);
         }
     }
     
@@ -45,7 +49,7 @@ app.controller("accountController", ["$scope", "$location", "$window", function(
             alert("Login Succesful")
             localStorage.setItem("ifLogin", true);
             $location.path('/homepage');
-            // $window.location.reload();
+            $window.location.reload(true);
         } else {
             alert("Incorrect login details, try again");
         }
@@ -68,7 +72,7 @@ app.controller("accountController", ["$scope", "$location", "$window", function(
         localStorage.setItem("ifLogin", false);
         alert("Good Day");
         $location.path('/');
-        // $window.location.reload();
+        $window.location.reload(true);
     }
 
     
